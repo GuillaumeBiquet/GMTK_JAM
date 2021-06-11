@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< Updated upstream
   - Bullet
+=======
+  - Wall
+  - MotherShip
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
@@ -14,7 +19,12 @@ TagManager:
   - UI
   - Player
   - 
+<<<<<<< Updated upstream
   - Bullet
+=======
+  - Wall
+  - 
+>>>>>>> Stashed changes
   - 
   - 
   - 
