@@ -9,7 +9,7 @@ public class Ship : MonoBehaviour
 
     Rigidbody2D rb;
     Vector2 velocity;
-
+    bool isConnected = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,17 +27,20 @@ public class Ship : MonoBehaviour
 
     private void FixedUpdate()
     {
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("MotherShip"))
+        if (isConnected && ( collision.gameObject.CompareTag("MotherShip") || collision.gameObject.CompareTag("Ship") ) )
             return;
 
-        Debug.Log("here1: " + collision.gameObject.name);
         velocity = Vector2.Reflect(velocity, collision.contacts[0].normal);
         rb.velocity = velocity;
+    }
+
+    public void ConnectToMothership()
+    {
+        isConnected = true;
     }
 
 }

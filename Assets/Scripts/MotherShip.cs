@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MotherShip : MonoBehaviour
 {
-
+    [SerializeField] GameObject ropePrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Pet());
+        //StartCoroutine(Pet());
     }
 
     // Update is called once per frame
@@ -20,7 +20,12 @@ public class MotherShip : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger enter");
+        if (collision.gameObject.CompareTag("Ship"))
+        {
+            Ship ship = collision.gameObject.GetComponent<Ship>();
+            ConnectShip(collision.gameObject);
+            ship.ConnectToMothership();
+        }
     }
 
     IEnumerator Pet()
@@ -33,5 +38,13 @@ public class MotherShip : MonoBehaviour
             GetComponent<Rigidbody2D>().AddForce(Random.insideUnitCircle.normalized * 5000);
         }
     }
+
+
+    public void ConnectShip(GameObject shipGo)
+    {
+        Rope rope = Instantiate(ropePrefab, transform.position, Quaternion.identity).GetComponent<Rope>();
+        rope.GenerateRope(this.gameObject, shipGo);
+    }
+
 
 }

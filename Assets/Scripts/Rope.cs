@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D hookRb;
+    [SerializeField] HingeJoint2D hookJoint;
     [SerializeField] private GameObject linkPrefab;
-    [SerializeField] private GameObject connectedGameObject;
+
+    // TODO: give it an actual value
     [SerializeField] int nbLinks;
     Vector2 anchorPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        GenerateRope();
     }
 
-    void GenerateRope()
+    public void GenerateRope(GameObject connectedGameObject1, GameObject connectedGameObject2)
     {
-        Rigidbody2D previousRb = hookRb;
+        hookJoint.connectedBody = connectedGameObject1.GetComponent<Rigidbody2D>();
+        Rigidbody2D previousRb = hookJoint.attachedRigidbody;
         anchorPos = new Vector2(0, -linkPrefab.GetComponent<SpriteRenderer>().bounds.size.y);
 
         for (float i=0; i < nbLinks; i++)
@@ -30,10 +31,10 @@ public class Rope : MonoBehaviour
             joint.connectedAnchor = anchorPos;
             previousRb = link.GetComponent<Rigidbody2D>();
         }
-        SetConnectedGameObject(previousRb);
+        SetConnectedGameObject(connectedGameObject2, previousRb);
     }
 
-    void SetConnectedGameObject(Rigidbody2D endRb)
+    void SetConnectedGameObject(GameObject connectedGameObject, Rigidbody2D endRb)
     {
         HingeJoint2D joint = connectedGameObject.AddComponent<HingeJoint2D>();
         joint.connectedBody = endRb;
