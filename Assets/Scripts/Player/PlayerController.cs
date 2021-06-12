@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     ParticleSystem.EmissionModule emission;
 
     [Header("Stats")]
-    [SerializeField] float life = 10;
+    [SerializeField] float health = 10;
     [SerializeField] float rotationSpeed = 1;
     [SerializeField] float thrustPower = 100;
     float lastFired;
@@ -107,5 +107,22 @@ public class PlayerController : MonoBehaviour
         adjustRotation = Quaternion.Euler(0, 0, offSet);
         lookRotation = Quaternion.LookRotation(Vector3.forward, direction) * adjustRotation;
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+    }
+
+    public void UpgradeHealth(float value)
+    {
+        Debug.Log("Upgraded Health");
+        health += value;
+    }
+
+    public void UpgradeDamage()
+    {
+
+    }
+
+    public void UpgradeSpeed(float value)
+    {
+        Debug.Log("Upgraded Speed");
+        thrustPower += value;
     }
 }
