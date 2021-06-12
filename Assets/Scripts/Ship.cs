@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    [SerializeField] float force;
+    const float MAX_SCALE = 2f;
+    const float MIN_SCALE = 1f;
+
+    const float MAX_SPEED = 5f;
+    const float MIN_SPEED = 1f;
+
+    [SerializeField] float speed;
     [SerializeField] Sprite[] sprites;
+    [SerializeField] GameObject ropePrefab;
 
     Rigidbody2D rb;
     Vector2 velocity;
@@ -17,22 +24,16 @@ public class Ship : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
-        velocity = Random.insideUnitCircle.normalized * force;
-        rb.velocity = velocity;
 
         int index = Random.Range(0, sprites.Length);
         this.GetComponent<SpriteRenderer>().sprite = sprites[index];
 
+        transform.localScale = Vector3.one * Random.Range(MIN_SCALE, MAX_SCALE);
+        speed = Random.Range(MIN_SPEED, MAX_SPEED);
 
-    }
+        velocity = Random.insideUnitCircle.normalized * speed;
+        rb.velocity = velocity;
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    private void FixedUpdate()
-    {
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,9 +45,33 @@ public class Ship : MonoBehaviour
         rb.velocity = velocity;
     }
 
-    public void ConnectToMothership()
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ship"))
+        {
+            Ship ship = collision.gameObject.GetComponent<Ship>();
+            if (!ship.IsConnected && this.gameObject.transform.localScale.magnitude > collision.gameObject.transform.localScale.magnitude)
+            {
+                ConnectShip(collision.gameObject);
+                ship.Connect();
+            }
+        }
+    }
+
+    public void ConnectShip(GameObject shipGo)
+    {
+        Rope rope = Instantiate(ropePrefab, transform.position, Quaternion.identity).GetComponent<Rope>();
+        rope.GenerateRope(this.gameObject, shipGo);
+    }
+
+    public void Connect()
     {
         isConnected = true;
+    }
+
+    public void OnDestroy()
+    {
+        GameManager.Instance.nbShips--;
     }
 
 }

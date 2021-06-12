@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6600993574540264687}
   - component: {fileID: 6600993574540264684}
   - component: {fileID: 6600993574540264685}
+  - component: {fileID: 2903048546643409542}
   - component: {fileID: 6600993574540264686}
   m_Layer: 0
   m_Name: Ship
@@ -124,6 +125,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
+--- !u!58 &2903048546643409542
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600993574540264656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!114 &6600993574540264686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,12 +153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c44c53df267b6247af3edd03b27a3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  speed: 0
   sprites:
   - {fileID: 5145774931494969807, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: 4764904786231306360, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: 1737312000958490015, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: -7191423501990630808, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
+  ropePrefab: {fileID: 846956667877138827, guid: 9d2464a2e6ac2db45b2e45fa4eade592, type: 3}
 --- !u!1 &7171212377230461400
 GameObject:
   m_ObjectHideFlags: 0

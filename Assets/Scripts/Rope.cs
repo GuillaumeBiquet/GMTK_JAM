@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
+    const int MIN_JOINTS = 4;
+    const int MAX_JOINTS = 8;
+
+
     [SerializeField] HingeJoint2D hookJoint;
     [SerializeField] private GameObject linkPrefab;
 
-    // TODO: give it an actual value
-    [SerializeField] int nbLinks;
     Vector2 anchorPos;
 
     // Start is called before the first frame update
@@ -18,11 +20,13 @@ public class Rope : MonoBehaviour
 
     public void GenerateRope(GameObject connectedGameObject1, GameObject connectedGameObject2)
     {
+        int nbJoints = Random.Range(MIN_JOINTS, MAX_JOINTS);
+
         hookJoint.connectedBody = connectedGameObject1.GetComponent<Rigidbody2D>();
         Rigidbody2D previousRb = hookJoint.attachedRigidbody;
         anchorPos = new Vector2(0, -linkPrefab.GetComponent<SpriteRenderer>().bounds.size.y);
 
-        for (float i=0; i < nbLinks; i++)
+        for (float i=0; i < nbJoints; i++)
         {
             GameObject link = Instantiate(linkPrefab, transform.position, Quaternion.identity);
             link.transform.parent = transform;
