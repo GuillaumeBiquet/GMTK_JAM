@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3046629018072367560}
   - component: {fileID: 3046629018072367671}
   - component: {fileID: 3046629018072367670}
+  - component: {fileID: 6128140419461643891}
   m_Layer: 0
   m_Name: RopeSegment
-  m_TagString: Untagged
+  m_TagString: RopeSegment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3252368070393340514, guid: d5f6e183c236d344d917dffcdb01f9e9, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -4570153536982545689, guid: f94c7b67892ffb043bf000fbe06c94d7, type: 3}
+  m_Color: {r: 0.048256267, g: 0.5566038, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -157,3 +158,19 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 60
     m_UpperAngle: -60
+--- !u!114 &6128140419461643891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046629018072367669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83b12f68220c6214397a7cb51a1e5470, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 3
+  maxHpColor: {r: 0.3959682, g: 1, b: 0, a: 1}
+  minHpColor: {r: 1, g: 0, b: 0.27964067, a: 1}
+  hp: 0

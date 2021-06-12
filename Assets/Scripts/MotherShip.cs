@@ -24,8 +24,7 @@ public class MotherShip : MonoBehaviour
         {
             Ship ship = collision.gameObject.GetComponent<Ship>();
             if (!ship.IsConnected) {
-                ConnectShip(collision.gameObject);
-                ship.Connect();
+                ConnectToShip(ship);
             }
         }
     }
@@ -41,11 +40,11 @@ public class MotherShip : MonoBehaviour
         }
     }
 
-
-    public void ConnectShip(GameObject shipGo)
+    public void ConnectToShip(Ship ship)
     {
         Rope rope = Instantiate(ropePrefab, transform.position, Quaternion.identity).GetComponent<Rope>();
-        rope.GenerateRope(this.gameObject, shipGo);
+        rope.GenerateRope(this.gameObject, ship.gameObject);
+        ship.Connect();
     }
 
 

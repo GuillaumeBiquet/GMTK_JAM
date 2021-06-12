@@ -8,6 +8,7 @@ TagManager:
   - MotherShip
   - Bullet
   - Ship
+  - RopeSegment
   layers:
   - Default
   - TransparentFX
@@ -42,6 +43,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1543209139
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

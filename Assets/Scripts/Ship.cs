@@ -52,21 +52,22 @@ public class Ship : MonoBehaviour
             Ship ship = collision.gameObject.GetComponent<Ship>();
             if (!ship.IsConnected && this.gameObject.transform.localScale.magnitude > collision.gameObject.transform.localScale.magnitude)
             {
-                ConnectShip(collision.gameObject);
-                ship.Connect();
+                ConnectToShip(ship);
             }
         }
     }
 
-    public void ConnectShip(GameObject shipGo)
+    public void ConnectToShip(Ship ship)
     {
         Rope rope = Instantiate(ropePrefab, transform.position, Quaternion.identity).GetComponent<Rope>();
-        rope.GenerateRope(this.gameObject, shipGo);
+        rope.GenerateRope(this.gameObject, ship.gameObject);
+        ship.Connect();
     }
 
     public void Connect()
     {
         isConnected = true;
+        
     }
 
     public void OnDestroy()

@@ -14,11 +14,12 @@ public class Bullet1 : Bullet
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Wall")
+        if (collision.CompareTag("RopeSegment"))
         {
-            Debug.Log("Collided");
+            collision.gameObject.GetComponent<RopeSegment>().TakeDamage(damage);
             Instantiate(explo, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+
     }
 }

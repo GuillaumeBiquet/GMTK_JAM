@@ -28,12 +28,10 @@ public class Rope : MonoBehaviour
 
         for (float i=0; i < nbJoints; i++)
         {
-            GameObject link = Instantiate(linkPrefab, transform.position, Quaternion.identity);
-            link.transform.parent = transform;
-            HingeJoint2D joint = link.GetComponent<HingeJoint2D>();
-            joint.connectedBody = previousRb;
-            joint.connectedAnchor = anchorPos;
-            previousRb = link.GetComponent<Rigidbody2D>();
+            RopeSegment ropeSegment = Instantiate(linkPrefab, transform.position, Quaternion.identity).GetComponent<RopeSegment>();
+            ropeSegment.transform.parent = transform;
+            ropeSegment.SetUp(this, previousRb, anchorPos);
+            previousRb = ropeSegment.Rb;
         }
         SetConnectedGameObject(connectedGameObject2, previousRb);
     }
@@ -46,4 +44,10 @@ public class Rope : MonoBehaviour
         joint.anchor = Vector3.zero;
         joint.connectedAnchor = anchorPos;
     }
+
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
+    }
+
 }
