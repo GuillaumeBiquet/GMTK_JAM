@@ -23,6 +23,9 @@ public class MotherShip : MonoBehaviour
         if (collision.gameObject.CompareTag("Ship"))
         {
             Ship ship = collision.gameObject.GetComponent<Ship>();
+            if (ship.IsConnected) {
+                return;
+            }
             ConnectShip(collision.gameObject);
             ship.ConnectToMothership();
         }

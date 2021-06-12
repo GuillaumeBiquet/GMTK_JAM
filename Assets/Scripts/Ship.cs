@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
-    [SerializeField] float angle;
     [SerializeField] float force;
+    [SerializeField] Sprite[] sprites;
 
     Rigidbody2D rb;
     Vector2 velocity;
     bool isConnected = false;
+
+    public bool IsConnected { get { return isConnected;  } }
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,10 @@ public class Ship : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         velocity = Random.insideUnitCircle.normalized * force;
         rb.velocity = velocity;
+
+        int index = Random.Range(0, sprites.Length);
+        this.GetComponent<SpriteRenderer>().sprite = sprites[index];
+
 
     }
 

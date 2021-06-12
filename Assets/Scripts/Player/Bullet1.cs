@@ -5,11 +5,9 @@ using UnityEngine;
 public class Bullet1 : Bullet
 {
 
-    float speed = 200;
-    float damage = 1;
-
-    public override void Launch(Vector2 direction)
+    public override void Launch(Vector2 playerVelocity ,Vector2 direction)
     {
+        rb.velocity = playerVelocity;
         rb.AddForce(direction.normalized * speed);
     }
 }
