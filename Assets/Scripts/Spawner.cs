@@ -29,7 +29,7 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                Instantiate(shipPrefab, transform.position, Quaternion.identity);
+                GameObject go = Instantiate(shipPrefab, transform.position, Quaternion.identity);
                 GameManager.Instance.nbShips++;
                 yield return new WaitForSeconds(spawnRate);
             }

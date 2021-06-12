@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
          }*/
         float min = Mathf.Round(score / 60);
         float sec = score % 60;
-        TMScore.text = min + ":" + sec.ToString("F0");
+        //TMScore.text = min + ":" + sec.ToString("F0");
     }
 
 

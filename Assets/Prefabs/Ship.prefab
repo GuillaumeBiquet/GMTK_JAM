@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6600993574540264657}
   - component: {fileID: 6600993574540264687}
   - component: {fileID: 6600993574540264684}
-  - component: {fileID: 6600993574540264685}
-  - component: {fileID: 2903048546643409542}
   - component: {fileID: 6600993574540264686}
+  - component: {fileID: 7365890127119710146}
+  - component: {fileID: 5774889118609804017}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Ship
@@ -109,38 +109,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &6600993574540264685
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6600993574540264656}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.16
---- !u!58 &2903048546643409542
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6600993574540264656}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.4
 --- !u!114 &6600993574540264686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +128,39 @@ MonoBehaviour:
   - {fileID: -7191423501990630808, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   connectedGFX: {fileID: 7171212377230461400}
   ropePrefab: {fileID: 846956667877138827, guid: 9d2464a2e6ac2db45b2e45fa4eade592, type: 3}
+  listConnectedShips: []
+--- !u!70 &7365890127119710146
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600993574540264656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.32, y: 0.29}
+  m_Direction: 0
+--- !u!70 &5774889118609804017
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600993574540264656}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.86550933, y: 0.86550933}
+  m_Direction: 0
 --- !u!1 &7171212377230461400
 GameObject:
   m_ObjectHideFlags: 0

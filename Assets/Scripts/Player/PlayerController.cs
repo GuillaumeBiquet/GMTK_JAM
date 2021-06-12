@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         emission = thrustParticles.emission;
         emission.enabled = false;
-        upgradePanel.SetActive(false);
+        //upgradePanel.SetActive(false);
     }
 
     // Update is called once per frame
