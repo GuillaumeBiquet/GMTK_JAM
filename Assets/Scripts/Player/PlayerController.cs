@@ -21,8 +21,11 @@ public class PlayerController : MonoBehaviour
 
 
     [SerializeField] Camera mainCam;
+    [SerializeField] ParticleSystem thrustParticles;
+    ParticleSystem.EmissionModule emission;
 
     [Header("Stats")]
+    [SerializeField] float life = 10;
     [SerializeField] float rotationSpeed = 1;
     [SerializeField] float thrustPower = 100;
     float lastFired;
@@ -37,7 +40,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();    
+        rb = GetComponent<Rigidbody2D>();
+        emission = thrustParticles.emission;
+        emission.enabled = false;
     }
 
     // Update is called once per frame
@@ -55,7 +60,7 @@ public class PlayerController : MonoBehaviour
             Fire();
         }
 
-        LookAt(mouseOnScreen - (Vector2)transform.position);
+        LookAt(mouseOnScreen - (Vector2)transform.position, 180);
     }
 
     private void FixedUpdate()
@@ -64,9 +69,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(mouseDirection * Time.fixedDeltaTime * thrustPower);
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, MAX_VELOCITY);
+            emission.enabled = true;
         }
         else if (rb.velocity != Vector2.zero)
         {
+            emission.enabled = false;
             StartCoroutine(SlowDown());
         }
     }
@@ -94,10 +101,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForEndOfFrame();
     }
 
-    void LookAt(Vector3 direction)
+    void LookAt(Vector3 direction, float offSet=0)
     {
         this.rb.angularVelocity = 0;
-        adjustRotation = Quaternion.Euler(0, 0, 180);
+        adjustRotation = Quaternion.Euler(0, 0, offSet);
         lookRotation = Quaternion.LookRotation(Vector3.forward, direction) * adjustRotation;
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
