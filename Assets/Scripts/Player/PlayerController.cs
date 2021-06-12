@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Camera mainCam;
     [SerializeField] ParticleSystem thrustParticles;
+    [SerializeField] GameObject upgradePanel;
     ParticleSystem.EmissionModule emission;
 
     [Header("Stats")]
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         emission = thrustParticles.emission;
         emission.enabled = false;
+        upgradePanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,6 +55,10 @@ public class PlayerController : MonoBehaviour
 
         isThrust = Input.GetKey(KeyCode.Space);
         isFiring = Input.GetKey(KeyCode.Mouse0);
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            upgradePanel.SetActive(!upgradePanel.active);
+        }
 
         if (isFiring && Time.time > lastFired + fireCd)
         {

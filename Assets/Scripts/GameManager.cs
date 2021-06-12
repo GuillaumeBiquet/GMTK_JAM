@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int maxShips = 100;
     [System.NonSerialized] public int nbShips = 0;
+    [SerializeField] public float coins;
 
+    //Scoring
+    [SerializeField] TextMeshProUGUI TMScore;
+    [SerializeField] public int score;
+    float timer = 0f;
 
     public bool TooManyShips { get { return nbShips >= maxShips; } }
 
@@ -26,7 +32,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > 1)
+        {
+            score += 10;
+            timer = 0;
+        }
+        TMScore.text = score.ToString();
+    }
 
 
 }
