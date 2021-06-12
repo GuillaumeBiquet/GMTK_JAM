@@ -102,10 +102,9 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   rotationSpeed: 10
   thrustPower: 100
-  fireCd: 0.2
+  bulletPos: {fileID: 7205775264335682732}
   bullet1: {fileID: 1383872159277573740, guid: 0c7ef1784d1148e45bf82fa44bb6f181, type: 3}
-  isFiring: 0
-  isThrust: 0
+  fireCd: 0.2
 --- !u!50 &81298577400238811
 Rigidbody2D:
   serializedVersion: 4
