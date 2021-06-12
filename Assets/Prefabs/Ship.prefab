@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2085954395
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 5145774931494969807, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,12 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c44c53df267b6247af3edd03b27a3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   sprites:
   - {fileID: 5145774931494969807, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: 4764904786231306360, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: 1737312000958490015, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: -7191423501990630808, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
+  connectedGFX: {fileID: 7171212377230461400}
   ropePrefab: {fileID: 846956667877138827, guid: 9d2464a2e6ac2db45b2e45fa4eade592, type: 3}
 --- !u!1 &7171212377230461400
 GameObject:
@@ -171,12 +171,12 @@ GameObject:
   - component: {fileID: 2954378480585122631}
   - component: {fileID: 9081273724030325207}
   m_Layer: 0
-  m_Name: TrapBackground
+  m_Name: ConnectedGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2954378480585122631
 Transform:
   m_ObjectHideFlags: 0
@@ -229,11 +229,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: -11
-  m_Sprite: {fileID: 4815223624974766804, guid: 70fecf9ba0deeb6458f3e7e4d5304049, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingLayerID: -2085954395
+  m_SortingLayer: 1
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: df87de617641525448ba13d86af810aa, type: 3}
+  m_Color: {r: 1, g: 1, b: 0.31764707, a: 0.3137255}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

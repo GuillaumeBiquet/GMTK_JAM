@@ -12,6 +12,8 @@ public class Rope : MonoBehaviour
     [SerializeField] private GameObject linkPrefab;
 
     Vector2 anchorPos;
+    GameObject firstConnectedGameObject;
+    GameObject secondConnectedGameObject;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,8 @@ public class Rope : MonoBehaviour
     {
         int nbJoints = Random.Range(MIN_JOINTS, MAX_JOINTS);
 
+        firstConnectedGameObject = connectedGameObject1;
+        secondConnectedGameObject = connectedGameObject2;
         hookJoint.connectedBody = connectedGameObject1.GetComponent<Rigidbody2D>();
         Rigidbody2D previousRb = hookJoint.attachedRigidbody;
         anchorPos = new Vector2(0, -linkPrefab.GetComponent<SpriteRenderer>().bounds.size.y);
@@ -47,6 +51,8 @@ public class Rope : MonoBehaviour
 
     public void DestroySelf()
     {
+        firstConnectedGameObject.GetComponent<Ship>().DisconnectFromShip(secondConnectedGameObject.GetComponent<Ship>());
+        secondConnectedGameObject.GetComponent<Ship>().DisconnectFromShip(firstConnectedGameObject.GetComponent<Ship>());
         Destroy(this.gameObject);
     }
 

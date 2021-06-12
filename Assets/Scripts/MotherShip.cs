@@ -44,7 +44,7 @@ public class MotherShip : MonoBehaviour
     {
         Rope rope = Instantiate(ropePrefab, transform.position, Quaternion.identity).GetComponent<Rope>();
         rope.GenerateRope(this.gameObject, ship.gameObject);
-        ship.Connect();
+        //ship.Connect();
     }
 
 
