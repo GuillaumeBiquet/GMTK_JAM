@@ -29,11 +29,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] HealthBar healthBar;
     [SerializeField] float rotationSpeed = 1;
     [SerializeField] float thrustPower = 100;
+    [SerializeField] GameObject shieldGFX;
 
     public float bulletDamage = 1;
     public float bulletSpeed = 250;
     float lastFired;
     float health;
+    int shieldHealth;
 
     [Header("Fire")]
     [SerializeField] Transform bulletPos;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
     bool isInvincible = false;
 
     public bool IsDead { get { return health <= 0; } }
+    public bool HasShield { get { return shieldHealth != 0; } }
 
 
     // Start is called before the first frame update
@@ -149,6 +152,8 @@ public class PlayerController : MonoBehaviour
     public void BuyShield()
     {
         Debug.Log("Shield bought");
+        shieldHealth = 3;
+        shieldGFX.SetActive(true);
     }
 
 
@@ -156,6 +161,17 @@ public class PlayerController : MonoBehaviour
     {
         if (isInvincible)
         {
+            return;
+        }
+
+
+        if (HasShield)
+        {
+            shieldHealth--;
+            if (!HasShield)
+            {
+                shieldGFX.SetActive(false);
+            }
             return;
         }
 

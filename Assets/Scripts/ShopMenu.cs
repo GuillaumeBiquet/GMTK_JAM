@@ -33,13 +33,12 @@ public class ShopMenu : MonoBehaviour
         healthButton.interactable = GameManager.Instance. crystals >= healthCost;
         speedButton.interactable = GameManager.Instance.crystals >= speedCost;
         damageButton.interactable = GameManager.Instance.crystals >= damageCost;
-        shieldButton.interactable = GameManager.Instance.crystals >= shieldCost;
+        shieldButton.interactable = GameManager.Instance.crystals >= shieldCost && !playerController.HasShield;
 
         TMHealthCost.text = healthCost.ToString();
         TMSpeedCost.text = speedCost.ToString();
         TMDamageCost.text = damageCost.ToString();
         TMShieldCost.text = shieldCost.ToString();
-
     }
 
     public void UpgradeHealth()
@@ -104,7 +103,7 @@ public class ShopMenu : MonoBehaviour
 
     public void BuyShield()
     {
-        if (GameManager.Instance.crystals > shieldCost)
+        if (GameManager.Instance.crystals > shieldCost && !playerController.HasShield)
         {
             GameManager.Instance.crystals -= shieldCost;
             //toDo
