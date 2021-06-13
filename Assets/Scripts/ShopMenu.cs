@@ -8,9 +8,11 @@ public class ShopMenu : MonoBehaviour
 {
     public float healthCost = 150;
     [SerializeField] TextMeshProUGUI TMHealthCost;
+    [SerializeField] TextMeshProUGUI TMHealthStat;
     [SerializeField] Button healthButton;
     public float speedCost = 150;
     [SerializeField] TextMeshProUGUI TMSpeedCost;
+    [SerializeField] TextMeshProUGUI TMSpeedStat;
     [SerializeField] Button speedButton;
     public float damageCost = 150;
     [SerializeField] TextMeshProUGUI TMDamageCost;
@@ -18,6 +20,8 @@ public class ShopMenu : MonoBehaviour
     public float shieldCost = 150;
     [SerializeField] TextMeshProUGUI TMShieldCost;
     [SerializeField] Button shieldButton;
+
+    [SerializeField] TextMeshProUGUI TMBank;
 
 
     PlayerController playerController;
@@ -30,7 +34,7 @@ public class ShopMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthButton.interactable = GameManager.Instance. crystals >= healthCost;
+        healthButton.interactable = GameManager.Instance. crystals >= healthCost && playerController.health < playerController.maxHealth;
         speedButton.interactable = GameManager.Instance.crystals >= speedCost;
         damageButton.interactable = GameManager.Instance.crystals >= damageCost;
         shieldButton.interactable = GameManager.Instance.crystals >= shieldCost;
@@ -39,6 +43,7 @@ public class ShopMenu : MonoBehaviour
         TMSpeedCost.text = speedCost.ToString();
         TMDamageCost.text = damageCost.ToString();
         TMShieldCost.text = shieldCost.ToString();
+        TMBank.text = GameManager.Instance.crystals.ToString();
 
     }
 
@@ -47,7 +52,7 @@ public class ShopMenu : MonoBehaviour
         if (GameManager.Instance.crystals > healthCost)
         {
             GameManager.Instance.crystals -= healthCost;
-            playerController.UpgradeHealth(1);
+            playerController.Heal();
             if (healthCost < 665)
             {
                 healthCost *= 1.5f;

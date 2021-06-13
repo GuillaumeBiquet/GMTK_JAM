@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     ParticleSystem.EmissionModule emission;
 
     [Header("Stats")]
-    [SerializeField] float maxHealth = 10;
+    [SerializeField] public float maxHealth = 10;
     [SerializeField] HealthBar healthBar;
     [SerializeField] float rotationSpeed = 1;
     [SerializeField] float thrustPower = 100;
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     public float bulletDamage = 1;
     public float bulletSpeed = 250;
     float lastFired;
-    float health;
+    public float health;
 
     [Header("Fire")]
     [SerializeField] Transform bulletPos;
@@ -125,10 +125,11 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
     }
 
-    public void UpgradeHealth(float value)
+    public void Heal()
     {
-        Debug.Log("Upgraded Health");
-        health += value;
+        Debug.Log("Heal");
+        health = Mathf.Clamp(health +1, 0, maxHealth);
+        healthBar.SetValue(health);
     }
 
     public void UpgradeDamage()

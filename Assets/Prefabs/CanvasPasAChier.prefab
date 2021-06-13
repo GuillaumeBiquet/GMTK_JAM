@@ -499,9 +499,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthCost: 150
   TMHealthCost: {fileID: 11611170794637954}
+  TMHealthStat: {fileID: 0}
   healthButton: {fileID: 11611170843158983}
   speedCost: 150
   TMSpeedCost: {fileID: 11611169234580548}
+  TMSpeedStat: {fileID: 0}
   speedButton: {fileID: 11611170246441652}
   damageCost: 150
   TMDamageCost: {fileID: 11611169385269043}
@@ -509,6 +511,7 @@ MonoBehaviour:
   shieldCost: 150
   TMShieldCost: {fileID: 11611169532452892}
   shieldButton: {fileID: 11611170514865619}
+  TMBank: {fileID: 0}
 --- !u!1 &11611169690234882
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,8 +696,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118.50003, y: 0}
-  m_SizeDelta: {x: 130.67, y: 53.96}
+  m_AnchoredPosition: {x: -5.0154, y: 0}
+  m_SizeDelta: {x: 331.8108, y: 53.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &11611169807537844
 CanvasRenderer:
@@ -724,7 +727,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: Upgrade weapons
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -751,14 +754,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 34
+  m_fontSizeBase: 34
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1509,8 +1512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118.50003, y: 0}
-  m_SizeDelta: {x: 130.67, y: 53.96}
+  m_AnchoredPosition: {x: -20, y: 0}
+  m_SizeDelta: {x: 327.67, y: 53.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &11611170523251701
 CanvasRenderer:
@@ -1540,7 +1543,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: Upgrade speed
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1574,7 +1577,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1871,8 +1874,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118.50003, y: 0}
-  m_SizeDelta: {x: 130.67, y: 53.96}
+  m_AnchoredPosition: {x: -9.52, y: 0}
+  m_SizeDelta: {x: 207.62, y: 53.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &11611170702802190
 CanvasRenderer:
@@ -1902,7 +1905,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: Buy Shield
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2533,8 +2536,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -118.50003, y: 0}
-  m_SizeDelta: {x: 130.67, y: 53.96}
+  m_AnchoredPosition: {x: -39, y: 0}
+  m_SizeDelta: {x: 216.86, y: 53.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &11611171020637258
 CanvasRenderer:
@@ -2564,7 +2567,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: Heal 1 HP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
