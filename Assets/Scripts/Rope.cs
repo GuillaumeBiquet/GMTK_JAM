@@ -28,6 +28,7 @@ public class Rope : MonoBehaviour
         secondConnectedGameObject = connectedGameObject2;
         hookJoint.connectedBody = connectedGameObject1.GetComponent<Rigidbody2D>();
         Rigidbody2D previousRb = hookJoint.attachedRigidbody;
+        hookJoint.GetComponent<RopeSegment>().SetUp(this);
         anchorPos = new Vector2(0, -linkPrefab.GetComponent<SpriteRenderer>().bounds.size.y);
 
         for (float i=0; i < nbJoints; i++)

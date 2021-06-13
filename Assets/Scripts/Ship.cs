@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
     [SerializeField] GameObject connectedGFX;
     [SerializeField] GameObject ropePrefab;
 
+    [Header("Feedbacks")]
+    public MMFeedbacks HurtFeedback;
+
     Rigidbody2D rb;
     Vector2 velocity;
     Vector3 initialScale;
@@ -29,6 +33,7 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
 
     public bool IsConnected { get { return isConnected; } }
     public bool IsInvincible { get { return connectedGFX.activeSelf; } }
+    public bool IsDead { get { return hp <= 0 ; } }
 
     public int UID { get { return gameObject.GetInstanceID(); } }
 
@@ -162,24 +167,39 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
     }
 
 
+    public void ResetScale()
+    {
+        Debug.Log("1: " + initialScale);
+    }
+
     public void TakeDamage(float damage)
     {
-        if (!isConnected)
+        if (!isConnected && !IsDead)
         {
             hp -= damage;
 
-            if (hp <= 0)
+            if (IsDead)
             {
+                HurtFeedback?.PlayFeedbacks(transform.position);
                 GameManager.Instance.crystals += 25;
-                Destroy(gameObject);
+                StartCoroutine(WaitBeforeDestroy());
             }
-            else
-            {
-                transform.localScale = initialScale * (hp / maxHp);
-            }
+            HurtFeedback?.PlayFeedbacks(transform.position);
+            StartCoroutine(WaitBeforeResetScale());
         }
     }
 
+    IEnumerator WaitBeforeDestroy()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Destroy(gameObject);
+    }
+
+    IEnumerator WaitBeforeResetScale()
+    {
+        yield return new WaitForSeconds(0.4f);
+        transform.localScale = initialScale;
+    }
 
     IEnumerator Regen()
     {
@@ -189,7 +209,6 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
             if (hp < maxHp)
             {
                 hp = Mathf.Clamp(hp+1, 0, maxHp);
-                transform.localScale = initialScale * (hp / maxHp);
                 yield return new WaitForSeconds(4f);
             }
             yield return new WaitForEndOfFrame();

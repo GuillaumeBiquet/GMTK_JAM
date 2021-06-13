@@ -39,6 +39,15 @@ public class RopeSegment : MonoBehaviour
         }
     }
 
+    public void SetUp(Rope _rope)
+    {
+        rope = _rope;
+        joint = GetComponent<HingeJoint2D>();
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        hp = maxHP;
+    }
+
     private void Update()
     {
 
