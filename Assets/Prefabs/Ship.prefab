@@ -126,8 +126,10 @@ MonoBehaviour:
   - {fileID: 4764904786231306360, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: 1737312000958490015, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: -7191423501990630808, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
+  maxHp: 3
   connectedGFX: {fileID: 7171212377230461400}
   ropePrefab: {fileID: 846956667877138827, guid: 9d2464a2e6ac2db45b2e45fa4eade592, type: 3}
+  healthBar: {fileID: 0}
   listConnectedShips: []
 --- !u!70 &7365890127119710146
 CapsuleCollider2D:

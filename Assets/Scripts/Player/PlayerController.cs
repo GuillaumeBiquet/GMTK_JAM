@@ -55,9 +55,10 @@ public class PlayerController : MonoBehaviour
 
         isThrust = Input.GetKey(KeyCode.Space);
         isFiring = Input.GetKey(KeyCode.Mouse0);
+
         if (Input.GetKeyDown(KeyCode.C))
         {
-            upgradePanel.SetActive(!upgradePanel.active);
+            upgradePanel.SetActive(!upgradePanel.activeSelf);
         }
 
         if (isFiring && Time.time > lastFired + fireCd)

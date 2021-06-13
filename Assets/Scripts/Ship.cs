@@ -10,15 +10,17 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
     const float MAX_SPEED = 5f;
     const float MIN_SPEED = 1f;
 
+    [SerializeField] float maxHp = 3f;
     [SerializeField] Sprite[] sprites;
     [SerializeField] GameObject connectedGFX;
     [SerializeField] GameObject ropePrefab;
 
     Rigidbody2D rb;
     Vector2 velocity;
+    Vector3 initialScale;
     bool isConnected = false;
     float speed;
-
+    float hp = 0f;
     Dictionary<int, Ship> connectedShips = new Dictionary<int, Ship>();
 
     // for inspector
@@ -26,6 +28,7 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
 
     public bool IsConnected { get { return isConnected; } }
     public bool IsInvincible { get { return connectedGFX.activeSelf; } }
+
     public int UID { get { return gameObject.GetInstanceID(); } }
 
     // Start is called before the first frame update
@@ -36,13 +39,16 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
         int index = Random.Range(0, sprites.Length);
         this.GetComponent<SpriteRenderer>().sprite = sprites[index];
 
-        transform.localScale = Vector3.one * Random.Range(MIN_SCALE, MAX_SCALE);
+        initialScale = Vector3.one * Random.Range(MIN_SCALE, MAX_SCALE);
+        transform.localScale = initialScale;
         speed = Random.Range(MIN_SPEED, MAX_SPEED);
 
         velocity = Random.insideUnitCircle.normalized * speed;
         rb.velocity = velocity;
 
         gameObject.name = "" + UID;
+        hp = maxHp;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -95,22 +101,55 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
         {
             isConnected = true;
             connectedGFX.SetActive(true);
+            StopCoroutine(Regen());
+            StartCoroutine(Regen());
         }
     }
 
     public void DisconnectFromShip(Ship ship)
     {
-        /*directConnectedShips.Remove(ship.UID);
-        allConnectedShips.Remove(ship.UID);
-        DisconnectFromAllDirectConnectedShipOf(ship, this);
-        Debug.Log("eerzeffds");
-        if (directConnectedShips.Count == 0)
+        connectedShips.Remove(ship.UID);
+        if (connectedShips.Count == 0)
         {
             connectedGFX.SetActive(false);
             isConnected = false;
-        }*/
+        }
     }
-    
+
+
+    public void TakeDamage(float damage)
+    {
+        if (!isConnected)
+        {
+            hp -= damage;
+
+            if (hp <= 0)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                transform.localScale = initialScale * (hp / maxHp);
+            }
+        }
+    }
+
+
+    IEnumerator Regen()
+    {
+        yield return new WaitForSeconds(4f);
+        while (isConnected)
+        {
+            if (hp < maxHp)
+            {
+                hp = Mathf.Clamp(hp+1, 0, maxHp);
+                transform.localScale = initialScale * (hp / maxHp);
+                yield return new WaitForSeconds(4f);
+            }
+            yield return new WaitForEndOfFrame();
+        }
+    }
+
 
     public void OnDestroy()
     {

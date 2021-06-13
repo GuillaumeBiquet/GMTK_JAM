@@ -20,6 +20,12 @@ public class Bullet1 : Bullet
             Instantiate(explo, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+        else if (collision.CompareTag("Ship") && !collision.isTrigger)
+        {
+            collision.gameObject.GetComponent<Ship>().TakeDamage(damage);
+            Instantiate(explo, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
 
     }
 }
