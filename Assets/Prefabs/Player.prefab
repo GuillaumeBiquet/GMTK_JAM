@@ -125,6 +125,7 @@ MonoBehaviour:
   fireCharge: 0
   chargeFactor: 2
   fireChargeBar: {fileID: 0}
+  overHeatingGFX: {fileID: 0}
   invincibilityTime: 1.5
   invincibilityDeltaTime: 0.15
 --- !u!50 &81298577400238811
@@ -49745,11 +49746,11 @@ MonoBehaviour:
   TestStopButton: 0
   PlayMethod: 3
   PoolSize: 10
-  MinVolume: 0.05
-  MaxVolume: 0.1
+  MinVolume: 1
+  MaxVolume: 1.1
   MinPitch: 0.95
   MaxPitch: 1.05
-  SfxAudioMixerGroup: {fileID: 0}
+  SfxAudioMixerGroup: {fileID: 24300002, guid: 7c2a8e9bbbbd0204bbc80486362e2c28, type: 2}
 --- !u!114 &7179134937793524254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59776,11 +59777,11 @@ MonoBehaviour:
   TestStopButton: 0
   PlayMethod: 1
   PoolSize: 10
-  MinVolume: 0.6
-  MaxVolume: 0.7
+  MinVolume: 10
+  MaxVolume: 11
   MinPitch: 1
   MaxPitch: 1
-  SfxAudioMixerGroup: {fileID: 0}
+  SfxAudioMixerGroup: {fileID: 24300002, guid: 7c2a8e9bbbbd0204bbc80486362e2c28, type: 2}
 --- !u!114 &1557160658523076060
 MonoBehaviour:
   m_ObjectHideFlags: 0

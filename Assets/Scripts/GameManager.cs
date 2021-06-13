@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject fireBar;
 
 
+    public AudioMixer audioMixer;
+
 
     public bool TooManyShips { get { return nbShips >= maxShips; } }
 
@@ -40,6 +43,12 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
         }
+
+    }
+
+    private void Start()
+    {
+        SetVolume(-40f);
     }
 
     private void Update()
@@ -82,6 +91,11 @@ public class GameManager : MonoBehaviour
     {
         UnpauseGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioMixer.SetFloat("volume", volume);
     }
 
 }
