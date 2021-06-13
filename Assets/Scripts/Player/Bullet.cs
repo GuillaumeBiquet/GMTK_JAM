@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     protected Rigidbody2D rb;
-    protected const float LIFE_TIME = 1.5f;
+    protected const float LIFE_TIME = 2.5f;
 
     protected PlayerController playerController;
     protected float speed;
