@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return instance; } }
 
     [SerializeField] int maxShips = 100;
-    [System.NonSerialized] public int nbShips = 0;
+    [SerializeField] public int nbShips = 0;
 
     //Scoring
     [SerializeField] TextMeshProUGUI TMScore;
