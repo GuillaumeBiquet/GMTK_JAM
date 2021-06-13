@@ -16,9 +16,15 @@ public class HealthBar : MonoBehaviour
         fillImage.color = Color.Lerp(colorMin, colorMax, Mathf.PingPong(slider.value / slider.maxValue, 1));
 
     }
+
     public void SetValue(float value)
     {
         slider.value = value;
         fillImage.color = Color.Lerp(colorMin, colorMax, Mathf.PingPong(slider.value / slider.maxValue, 1));
+    }
+
+    public void SetValueWithoutColor(float value)
+    {
+        slider.value = value;
     }
 }

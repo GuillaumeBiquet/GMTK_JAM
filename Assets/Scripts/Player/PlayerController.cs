@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float fireCd = 0.05f;
     [SerializeField] float randomiseFactor = 6;
     float maxCharge = 10;
-    [SerializeField] float fireCharge = 10;
+    [SerializeField] float fireCharge;
     [SerializeField] float chargeFactor = 2;
-    [SerializeField] FireChargeBar fireChargeBar;
-
+    [SerializeField] HealthBar fireChargeBar;
+    bool hasToCoolDown = false;
 
     [Header("Invincibility")]
     [SerializeField] float invincibilityTime = 1.5f;
@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
         healthBar.SetMaxValue(maxHealth);
         healthBar.SetValue(health);
 
+        fireCharge = 0;
         fireChargeBar.SetMaxValue(maxCharge);
         fireChargeBar.SetValue(fireCharge);
     }
@@ -87,19 +88,37 @@ public class PlayerController : MonoBehaviour
         isThrust = Input.GetKey(KeyCode.Space);
         isFiring = Input.GetKey(KeyCode.Mouse0);
 
-        if (isFiring && Time.time > lastFired + fireCd && fireCharge > 0.1)
+        if (isFiring && Time.time > lastFired + fireCd && fireCharge < maxCharge && !hasToCoolDown)
         {
+            fireCharge += 0.4f;
+            if (fireCharge > maxCharge)
+            {
+                fireCharge = maxCharge;
+                hasToCoolDown = true;
+            }
+
             lastFired = Time.time;
             Fire();
-            fireCharge -= 0.4f;
             fireChargeBar.SetValue(fireCharge);
-
         }
 
-        if (fireCharge < maxCharge)
+        if (fireCharge > 0)
         {
-            fireCharge += Time.deltaTime * chargeFactor;
-            fireChargeBar.SetValue(fireCharge);
+            fireCharge -= Time.deltaTime * chargeFactor;
+            if (fireCharge <= 0)
+            {
+                fireCharge = 0;
+                hasToCoolDown = false;
+            }
+
+            if (hasToCoolDown)
+            {
+                fireChargeBar.SetValueWithoutColor(fireCharge);
+            }
+            else
+            {
+                fireChargeBar.SetValue(fireCharge);
+            }
         }
 
         LookAt(mouseOnScreen - (Vector2)transform.position, 180);
@@ -117,10 +136,6 @@ public class PlayerController : MonoBehaviour
         {
             emission.enabled = false;
             StartCoroutine(SlowDown());
-        }
-        if (fireCharge < 10)
-        {
-            
         }
     }
 

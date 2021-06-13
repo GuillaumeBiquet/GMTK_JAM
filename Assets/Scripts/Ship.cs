@@ -176,8 +176,6 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
                 GameManager.Instance.crystals += 25;
                 StartCoroutine(WaitBeforeDestroy());
             }
-            HurtFeedback?.PlayFeedbacks(transform.position);
-            StartCoroutine(WaitBeforeResetScale());
         }
     }
 
@@ -185,12 +183,6 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
     {
         yield return new WaitForSeconds(0.3f);
         Destroy(gameObject);
-    }
-
-    IEnumerator WaitBeforeResetScale()
-    {
-        yield return new WaitForSeconds(0.4f);
-        transform.localScale = initialScale;
     }
 
     IEnumerator Regen()

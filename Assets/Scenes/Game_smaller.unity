@@ -1495,7 +1495,7 @@ PrefabInstance:
       objectReference: {fileID: 858601903}
     - target: {fileID: 81298577400238810, guid: d45fd9a587826aa4392c322cb1665637, type: 3}
       propertyPath: maxHealth
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 81298577400238810, guid: d45fd9a587826aa4392c322cb1665637, type: 3}
       propertyPath: thrustPower
@@ -1973,7 +1973,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7785715, y: 1}
+    m_SensorSize: {x: 1.7775736, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
