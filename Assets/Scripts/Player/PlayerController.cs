@@ -38,6 +38,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float fireCd = 0.2f;
 
 
+    [Header("Invincibility")]
+    [SerializeField] float invincibilityTime = 1.5f;
+    [SerializeField] float invincibilityDeltaTime = 0.15f;
+    bool isInvincible = false;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -122,9 +129,10 @@ public class PlayerController : MonoBehaviour
         health += value;
     }
 
-    public void UpgradeDamage()
+    public void UpgradeDamage(float value)
     {
-
+        Debug.Log("Upgraded Health");
+        bullet1.GetComponent<Bullet>().UpgradeDamage(value);
     }
 
     public void UpgradeSpeed(float value)
@@ -132,4 +140,40 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Upgraded Speed");
         thrustPower += value;
     }
+
+
+    public void TakeDamage(Transform damageDealer, float damage)
+    {
+        if (isInvincible)
+        {
+            return;
+        }
+
+        StartCoroutine(BecomeTemporarilyInvincible());
+    }
+
+    private IEnumerator BecomeTemporarilyInvincible()
+    {
+        isInvincible = true;
+
+        for (float i = 0; i < invincibilityTime; i += invincibilityDeltaTime)
+        {
+            // Alternate between 0 and 1 scale to simulate flashing
+            if (transform.localScale == Vector3.one)
+            {
+                transform.localScale = Vector3.zero;
+            }
+            else
+            {
+                transform.localScale = Vector3.one;
+            }
+            yield return new WaitForSeconds(invincibilityDeltaTime);
+        }
+
+        transform.localScale = Vector3.one;
+        isInvincible = false;
+    }
+
+
+
 }

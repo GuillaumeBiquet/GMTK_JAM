@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     //Scoring
     [SerializeField] TextMeshProUGUI TMScore;
     [SerializeField] public float score;
+    [SerializeField] public PlayerController player;
     float timer = 0f;
 
     public bool TooManyShips { get { return nbShips >= maxShips; } }

@@ -53,7 +53,8 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isConnected && ( collision.gameObject.CompareTag("MotherShip") || collision.gameObject.CompareTag("Ship") ) )
+        bool isCollidingWithShipWhenConnected = isConnected && collision.gameObject.CompareTag("Ship");
+        if (isCollidingWithShipWhenConnected || collision.gameObject.CompareTag("Player"))
             return;
 
         velocity = Vector2.Reflect(velocity, collision.contacts[0].normal);

@@ -16,4 +16,9 @@ public class Bullet : MonoBehaviour
 
     public virtual void Launch(Vector2 playerVelocity, Vector2 direction) {}
 
+    public void UpgradeDamage(float damageBoost)
+    {
+        damage += damageBoost;
+    }
+
 }
