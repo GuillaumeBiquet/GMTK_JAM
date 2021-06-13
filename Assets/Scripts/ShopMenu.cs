@@ -20,7 +20,7 @@ public class ShopMenu : MonoBehaviour
     [SerializeField] Button shieldButton;
 
 
-    [SerializeField] PlayerController playerController;
+    PlayerController playerController;
     // Start is called before the first frame update
     void Start()
     {

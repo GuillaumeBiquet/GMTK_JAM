@@ -509,6 +509,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11611169234580549, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -35.66999
+      objectReference: {fileID: 0}
+    - target: {fileID: 11611169234580549, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.9099998
+      objectReference: {fileID: 0}
+    - target: {fileID: 11611169385269040, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -35.66999
+      objectReference: {fileID: 0}
+    - target: {fileID: 11611169385269040, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.9099998
+      objectReference: {fileID: 0}
+    - target: {fileID: 11611169532452893, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -35.66999
+      objectReference: {fileID: 0}
+    - target: {fileID: 11611169532452893, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.9099998
+      objectReference: {fileID: 0}
     - target: {fileID: 11611169572153264, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -576,6 +600,14 @@ PrefabInstance:
     - target: {fileID: 11611170320919243, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11611170794637955, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -35.66999
+      objectReference: {fileID: 0}
+    - target: {fileID: 11611170794637955, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.9099998
       objectReference: {fileID: 0}
     - target: {fileID: 11611171039624789, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
       propertyPath: m_Pivot.x
@@ -669,6 +701,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 877934257}
+    - target: {fileID: 886932397939270841, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.9099998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424894182813031054, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.709999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
 --- !u!1 &511323785
@@ -1429,10 +1469,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxShips: 20
-  coins: 0
   TMScore: {fileID: 308352340}
   score: 0
   player: {fileID: 1983582632}
+  TMCrystals: {fileID: 0}
+  crystals: 0
   scorePanel: {fileID: 1601035863}
   gamePanel: {fileID: 1275054185}
 --- !u!1 &950640967
@@ -1487,6 +1528,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b5f91c7c5095e4e8aaa4db25ac0b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthCost: 150
+  TMHealthCost: {fileID: 0}
+  healthButton: {fileID: 0}
+  speedCost: 150
+  TMSpeedCost: {fileID: 0}
+  speedButton: {fileID: 0}
+  damageCost: 150
+  TMDamageCost: {fileID: 0}
+  damageButton: {fileID: 0}
+  shieldCost: 150
+  TMShieldCost: {fileID: 0}
+  shieldButton: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &950640970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1896,7 +1950,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -300.41, y: -70}
+  m_AnchoredPosition: {x: -300.41003, y: -70}
   m_SizeDelta: {x: 85.23, y: 90.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071501223
@@ -2217,6 +2271,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 858601903}
+    - target: {fileID: 81298577400238810, guid: d45fd9a587826aa4392c322cb1665637, type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 81298577400238811, guid: d45fd9a587826aa4392c322cb1665637, type: 3}
       propertyPath: m_LinearDrag
       value: 0
@@ -2364,7 +2422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1275054186
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2827,7 +2885,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3145,6 +3203,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92b5f91c7c5095e4e8aaa4db25ac0b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthCost: 150
+  TMHealthCost: {fileID: 0}
+  healthButton: {fileID: 0}
+  speedCost: 150
+  TMSpeedCost: {fileID: 0}
+  speedButton: {fileID: 0}
+  damageCost: 150
+  TMDamageCost: {fileID: 0}
+  damageButton: {fileID: 0}
+  shieldCost: 150
+  TMShieldCost: {fileID: 0}
+  shieldButton: {fileID: 0}
+  playerController: {fileID: 0}
 --- !u!114 &1601035866
 MonoBehaviour:
   m_ObjectHideFlags: 0

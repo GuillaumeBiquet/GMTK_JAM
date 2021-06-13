@@ -5,17 +5,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     protected Rigidbody2D rb;
-<<<<<<< Updated upstream
-    protected float speed = 400;
-    protected float damage = 1;
-
     protected const float LIFE_TIME = 1.5f;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        Destroy(this.gameObject, LIFE_TIME);
-=======
     protected PlayerController playerController;
     protected float speed;
     protected float damage;
@@ -26,8 +17,7 @@ public class Bullet : MonoBehaviour
         playerController = GameManager.Instance.player;
         speed = playerController.bulletSpeed;
         damage = playerController.bulletDamage;
-        Destroy(this.gameObject, 5);
->>>>>>> Stashed changes
+        Destroy(this.gameObject, LIFE_TIME);
     }
 
     public virtual void Launch(Vector2 playerVelocity, Vector2 direction) {}

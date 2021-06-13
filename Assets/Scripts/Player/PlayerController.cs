@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float thrustPower = 100;
 
     public float bulletDamage = 1;
-    public float bulletSpeed = 200;
+    public float bulletSpeed = 250;
     float lastFired;
     float health;
 
@@ -134,12 +134,8 @@ public class PlayerController : MonoBehaviour
     public void UpgradeDamage()
     {
         Debug.Log("Upgraded Damage");
-<<<<<<< Updated upstream
-        bullet1.GetComponent<Bullet>().UpgradeDamage(value);
-=======
         bulletSpeed += 50;
         fireCd /= 1.2f;
->>>>>>> Stashed changes
     }
 
     public void UpgradeSpeed()

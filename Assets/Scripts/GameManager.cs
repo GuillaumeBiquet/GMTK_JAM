@@ -41,17 +41,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< Updated upstream
-
-        /* timer += Time.deltaTime;
-         if (timer > 1)
-         {
-             score += 10;
-             timer = 0;
-         }*/
-
-=======
->>>>>>> Stashed changes
         score += Time.deltaTime;
         float min = Mathf.Round(score / 60);
         float sec = score % 60;
