@@ -685,6 +685,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 6600993574540264656, guid: caa5d9cc3d437f640962f2e5422fa8b8, type: 3}
   spawnRate: 3
+  minSpeed: 2
+  maxSpeed: 5
 --- !u!212 &592372597
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1265,6 +1267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 6600993574540264656, guid: caa5d9cc3d437f640962f2e5422fa8b8, type: 3}
   spawnRate: 3
+  minSpeed: 2
+  maxSpeed: 5
 --- !u!212 &1058613189
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1364,7 +1368,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123074055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0893934, y: 1.616, z: 0}
+  m_LocalPosition: {x: 2.083, y: 1.577, z: 0}
   m_LocalScale: {x: 0.026156101, y: 0.026156101, z: 0.026156101}
   m_Children: []
   m_Father: {fileID: 663379332}
@@ -1869,7 +1873,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412444636}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.084, y: 1.027, z: 0}
+  m_LocalPosition: {x: 2.084, y: 1, z: 0}
   m_LocalScale: {x: 0.026156101, y: 0.026156101, z: 0.026156101}
   m_Children: []
   m_Father: {fileID: 663379332}
@@ -2029,6 +2033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 6600993574540264656, guid: caa5d9cc3d437f640962f2e5422fa8b8, type: 3}
   spawnRate: 3
+  minSpeed: 2
+  maxSpeed: 5
 --- !u!212 &1521950442
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2193,6 +2199,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 6600993574540264656, guid: caa5d9cc3d437f640962f2e5422fa8b8, type: 3}
   spawnRate: 3
+  minSpeed: 2
+  maxSpeed: 5
 --- !u!212 &1589689291
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2659,6 +2667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 6600993574540264656, guid: caa5d9cc3d437f640962f2e5422fa8b8, type: 3}
   spawnRate: 3
+  minSpeed: 2
+  maxSpeed: 5
 --- !u!212 &1839955646
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3134,6 +3144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipPrefab: {fileID: 6600993574540264656, guid: caa5d9cc3d437f640962f2e5422fa8b8, type: 3}
   spawnRate: 3
+  minSpeed: 2
+  maxSpeed: 5
 --- !u!212 &2135308061
 SpriteRenderer:
   m_ObjectHideFlags: 0

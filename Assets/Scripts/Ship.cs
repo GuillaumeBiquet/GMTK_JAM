@@ -44,16 +44,24 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
 
         initialScale = Vector3.one * Random.Range(MIN_SCALE, MAX_SCALE);
         transform.localScale = initialScale;
-        speed = Random.Range(MIN_SPEED, MAX_SPEED);
-
-        velocity = Random.insideUnitCircle.normalized * speed;
-        rb.velocity = velocity;
+        
 
         gameObject.name = "" + UID;
         hp = maxHp;
 
         StartCoroutine(DetectAround());
 
+    }
+    public void Launch(float speed)
+    {
+        //speed = Random.Range(MIN_SPEED, MAX_SPEED);
+
+        velocity = Random.insideUnitCircle.normalized * speed;
+        if (!rb)
+        {
+            rb = GetComponent<Rigidbody2D>();
+        }
+        rb.velocity = velocity;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

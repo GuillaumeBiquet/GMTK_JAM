@@ -164,7 +164,6 @@ public class PlayerController : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        Debug.Log("Upgraded Damage");
         bulletSpeed += 50;
         maxCharge += 2;
         chargeFactor += 0.5f;
@@ -172,7 +171,6 @@ public class PlayerController : MonoBehaviour
 
     public void UpgradeSpeed()
     {
-        Debug.Log("Upgraded Speed");
         thrustPower += 75;
         maxVelocity += 1.5f;
     }
@@ -180,7 +178,6 @@ public class PlayerController : MonoBehaviour
     //TODO
     public void BuyShield()
     {
-        Debug.Log("Shield bought");
         shieldHealth = 3;
         shieldGFX.SetActive(true);
     }
