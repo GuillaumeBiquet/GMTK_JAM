@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6600993574540264686}
   - component: {fileID: 7365890127119710146}
   - component: {fileID: 5774889118609804017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ship
   m_TagString: Ship
   m_Icon: {fileID: 0}
@@ -121,15 +121,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c44c53df267b6247af3edd03b27a3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
+  maxHp: 3
   sprites:
   - {fileID: 5145774931494969807, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: 4764904786231306360, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: 1737312000958490015, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
   - {fileID: -7191423501990630808, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
-  maxHp: 3
   connectedGFX: {fileID: 7171212377230461400}
   ropePrefab: {fileID: 846956667877138827, guid: 9d2464a2e6ac2db45b2e45fa4eade592, type: 3}
-  healthBar: {fileID: 0}
   listConnectedShips: []
 --- !u!70 &7365890127119710146
 CapsuleCollider2D:
@@ -173,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2954378480585122631}
   - component: {fileID: 9081273724030325207}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ConnectedGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

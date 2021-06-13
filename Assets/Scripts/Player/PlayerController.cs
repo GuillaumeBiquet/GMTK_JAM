@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float maxHealth = 10;
     [SerializeField] HealthBar healthBar;
     [SerializeField] float rotationSpeed = 1;
-    [SerializeField] float thrustPower = 100;
+    [SerializeField] float thrustPower = 300;
     [SerializeField] GameObject shieldGFX;
 
     public float bulletDamage = 1;
@@ -40,7 +40,12 @@ public class PlayerController : MonoBehaviour
     [Header("Fire")]
     [SerializeField] Transform bulletPos;
     [SerializeField] GameObject bullet1;
-    [SerializeField] float fireCd = 0.2f;
+    [SerializeField] float fireCd = 0.05f;
+    [SerializeField] float randomiseFactor = 6;
+    float maxCharge = 10;
+    [SerializeField] float fireCharge = 10;
+    [SerializeField] float chargeFactor = 2;
+    [SerializeField] FireChargeBar fireChargeBar;
 
 
     [Header("Invincibility")]
@@ -62,6 +67,9 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
         healthBar.SetMaxValue(maxHealth);
         healthBar.SetValue(health);
+
+        fireChargeBar.SetMaxValue(maxCharge);
+        fireChargeBar.SetValue(fireCharge);
     }
 
     // Update is called once per frame
@@ -73,10 +81,19 @@ public class PlayerController : MonoBehaviour
         isThrust = Input.GetKey(KeyCode.Space);
         isFiring = Input.GetKey(KeyCode.Mouse0);
 
-        if (isFiring && Time.time > lastFired + fireCd)
+        if (isFiring && Time.time > lastFired + fireCd && fireCharge > 0.1)
         {
             lastFired = Time.time;
             Fire();
+            fireCharge -= 0.4f;
+            fireChargeBar.SetValue(fireCharge);
+
+        }
+
+        if (fireCharge < maxCharge)
+        {
+            fireCharge += Time.deltaTime * chargeFactor;
+            fireChargeBar.SetValue(fireCharge);
         }
 
         LookAt(mouseOnScreen - (Vector2)transform.position, 180);
@@ -95,14 +112,24 @@ public class PlayerController : MonoBehaviour
             emission.enabled = false;
             StartCoroutine(SlowDown());
         }
+        if (fireCharge < 10)
+        {
+            
+        }
     }
 
     void Fire()
     {
         mouseOnScreen = mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseDirection = (mouseOnScreen - (Vector2)transform.position).normalized;
-        Bullet bullet = Instantiate(bullet1, bulletPos.position, Quaternion.identity).GetComponent<Bullet>();
-        bullet.Launch(rb.velocity, mouseDirection);
+       
+        for(int x =0; x<3; x++)
+        {
+            Vector2 randomise = Random.insideUnitCircle.normalized;
+            Vector2 launchDirection = mouseDirection + (randomise / randomiseFactor);
+            Bullet bullet = Instantiate(bullet1, bulletPos.position, Quaternion.identity).GetComponent<Bullet>();
+            bullet.Launch(rb.velocity, launchDirection);
+        }
     }
 
 
@@ -139,14 +166,15 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Upgraded Damage");
         bulletSpeed += 50;
-        fireCd /= 1.2f;
+        maxCharge += 2;
+        chargeFactor += 0.5f;
     }
 
     public void UpgradeSpeed()
     {
         Debug.Log("Upgraded Speed");
-        thrustPower += 25;
-        maxVelocity += 1;
+        thrustPower += 75;
+        maxVelocity += 1.5f;
     }
 
     //TODO

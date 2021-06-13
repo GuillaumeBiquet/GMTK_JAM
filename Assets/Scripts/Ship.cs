@@ -7,9 +7,10 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
     const float MAX_SCALE = 2f;
     const float MIN_SCALE = 1f;
 
-    const float MAX_SPEED = 5f;
-    const float MIN_SPEED = 1f;
+    const float MAX_SPEED = 15f;
+    const float MIN_SPEED = 5f;
 
+    [SerializeField] LayerMask mask;
     [SerializeField] float maxHp = 3f;
     [SerializeField] Sprite[] sprites;
     [SerializeField] GameObject connectedGFX;
@@ -34,6 +35,8 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
     // Start is called before the first frame update
     void Start()
     {
+        Physics2D.reuseCollisionCallbacks = true;
+
         rb = this.GetComponent<Rigidbody2D>();
 
         int index = Random.Range(0, sprites.Length);
@@ -49,6 +52,8 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
         gameObject.name = "" + UID;
         hp = maxHp;
 
+        StartCoroutine(DetectAround());
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -56,13 +61,16 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
         bool isCollidingWithShipWhenConnected = isConnected && collision.gameObject.CompareTag("Ship");
         if (isCollidingWithShipWhenConnected || collision.gameObject.CompareTag("Player"))
             return;
-
         velocity = Vector2.Reflect(velocity, collision.contacts[0].normal);
         rb.velocity = velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (this.isConnected)
+        {
+            return;
+        }
         if (collision.gameObject.CompareTag("Ship") && collision.isTrigger)
         {
             Ship ship = collision.gameObject.GetComponent<Ship>();
@@ -81,6 +89,34 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
                 ship.ConnectToShip(this);
             }
 
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (rb.velocity.magnitude < 2)
+        {
+            rb.velocity *= 2;
+        }
+    }
+
+    IEnumerator DetectAround()
+    {
+        while (true)
+        {
+            RaycastHit2D[] hit = Physics2D.CircleCastAll(transform.position, 2, Vector2.zero, 0, mask);
+
+            foreach (RaycastHit2D h in hit)
+            {
+                if (h.collider.gameObject.name.Equals(this.UID.ToString()) || h.collider.isTrigger)
+                {
+                    continue;
+                }
+                Vector2 direction = -(h.collider.transform.position - transform.position);
+                Vector2 force = direction.normalized * 200;
+                rb.AddForce(force);
+            }
+            yield return new WaitForSeconds(2);
         }
     }
 

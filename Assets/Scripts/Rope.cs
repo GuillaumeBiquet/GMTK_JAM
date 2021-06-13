@@ -51,8 +51,14 @@ public class Rope : MonoBehaviour
 
     public void DestroySelf()
     {
-        firstConnectedGameObject.GetComponent<Ship>().DisconnectFromShip(secondConnectedGameObject.GetComponent<Ship>());
-        secondConnectedGameObject.GetComponent<Ship>().DisconnectFromShip(firstConnectedGameObject.GetComponent<Ship>());
+        if (firstConnectedGameObject && secondConnectedGameObject)
+        {
+            firstConnectedGameObject.GetComponent<Ship>().DisconnectFromShip(secondConnectedGameObject.GetComponent<Ship>());
+        }
+        if (secondConnectedGameObject && firstConnectedGameObject)
+        {
+            secondConnectedGameObject.GetComponent<Ship>().DisconnectFromShip(firstConnectedGameObject.GetComponent<Ship>());
+        }
         Destroy(this.gameObject);
     }
 

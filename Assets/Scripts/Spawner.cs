@@ -11,14 +11,22 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(Spawn());
+        StartCoroutine(Grow());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         
     }
 
+    IEnumerator Grow()
+    {
+        while (gameObject.scene.IsValid() && !GameManager.Instance.TooManyShips && spawnRate > 0.5)
+        {
+            spawnRate -= 0.1f;
+            yield return new WaitForSecondsRealtime(5);
+        }
+    }
     IEnumerator Spawn()
     {
         while (gameObject.scene.IsValid())
@@ -29,9 +37,12 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                Instantiate(shipPrefab, transform.position, Quaternion.identity);
-                GameManager.Instance.nbShips++;
-                yield return new WaitForSeconds(spawnRate);
+                if (Random.Range(0,1) < 0.5)
+                {
+                    Instantiate(shipPrefab, transform.position, Quaternion.identity);
+                    GameManager.Instance.nbShips++;
+                    yield return new WaitForSeconds(spawnRate);
+                }
             }
         }
     }
