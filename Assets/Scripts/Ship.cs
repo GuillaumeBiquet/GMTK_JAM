@@ -117,8 +117,7 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
     {
         while (true)
         {
-            RaycastHit2D[] hit = Physics2D.CircleCastAll(transform.position, 2, Vector2.zero, 0, mask);
-
+            RaycastHit2D[] hit = Physics2D.CircleCastAll(transform.position, 3, Vector2.zero, 0, mask);
             foreach (RaycastHit2D h in hit)
             {
                 if (h.collider.gameObject.name.Equals(this.UID.ToString()) || h.collider.isTrigger)
@@ -126,10 +125,11 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
                     continue;
                 }
                 Vector2 direction = -(h.collider.transform.position - transform.position);
-                Vector2 force = direction.normalized * 200;
+                float distance = direction.magnitude;
+                Vector2 force = (direction.normalized * 100)/distance;
                 rb.AddForce(force);
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.5f);
         }
     }
 

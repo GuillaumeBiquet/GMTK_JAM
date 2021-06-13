@@ -54,6 +54,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         score += Time.deltaTime;
+        if (maxShips < 175 && score > 60)
+        {
+            maxShips = 175;
+        } else if (maxShips < 250 && score > 120)
+        {
+            maxShips = 250;
+        }
         float min = Mathf.Round(score / 60);
         float sec = score % 60;
         TMScore.text = min + ":" + sec.ToString("F0");

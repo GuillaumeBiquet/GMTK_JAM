@@ -55,9 +55,6 @@ public class Rope : MonoBehaviour
         if (firstConnectedGameObject && secondConnectedGameObject)
         {
             firstConnectedGameObject.GetComponent<Ship>().DisconnectFromShip(secondConnectedGameObject.GetComponent<Ship>());
-        }
-        if (secondConnectedGameObject && firstConnectedGameObject)
-        {
             secondConnectedGameObject.GetComponent<Ship>().DisconnectFromShip(firstConnectedGameObject.GetComponent<Ship>());
         }
         Destroy(this.gameObject);

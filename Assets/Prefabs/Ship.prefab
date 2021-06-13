@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2736460638884514111}
   - component: {fileID: 7467859857752778247}
   - component: {fileID: 1022797086773498176}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HurtParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4901,7 +4901,7 @@ GameObject:
   - component: {fileID: 901952567406606078}
   - component: {fileID: 7767758099354247000}
   - component: {fileID: 3030661038723855313}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LoseParticlesWhite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9787,7 +9787,7 @@ GameObject:
   - component: {fileID: 1149747861243823900}
   - component: {fileID: 2898891920857029847}
   - component: {fileID: 8826201315404321761}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14663,7 +14663,7 @@ GameObject:
   - component: {fileID: 7892809698007731201}
   - component: {fileID: 5398326139997945791}
   - component: {fileID: 9137519526832194564}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LightParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19556,7 +19556,7 @@ GameObject:
   - component: {fileID: 3239560498990848603}
   - component: {fileID: 8363910604572336976}
   - component: {fileID: 5389477988018984562}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HurtFeedbacks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20287,7 +20287,7 @@ GameObject:
   - component: {fileID: 6600993574540264686}
   - component: {fileID: 7365890127119710146}
   - component: {fileID: 5774889118609804017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ship
   m_TagString: Ship
   m_Icon: {fileID: 0}
@@ -20398,7 +20398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   maxHp: 3
   sprites:
   - {fileID: 5145774931494969807, guid: c4b90c33d21af6a4dabee01d41c4edef, type: 3}
@@ -20451,7 +20451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2954378480585122631}
   - component: {fileID: 9081273724030325207}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ConnectedGFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20535,7 +20535,7 @@ GameObject:
   - component: {fileID: 1548681790570151004}
   - component: {fileID: 4278449362594375751}
   - component: {fileID: 854401271364178454}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
