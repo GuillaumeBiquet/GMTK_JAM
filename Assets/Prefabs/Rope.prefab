@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hookJoint: {fileID: 8492022954316868381}
   linkPrefab: {fileID: 3046629018072367669, guid: 0bb9d39c53a623a4eb03804b27e8e6ec, type: 3}
-  nbLinks: 8
 --- !u!1001 &6890073196337097003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -101,6 +100,10 @@ PrefabInstance:
     - target: {fileID: 3046629018072367669, guid: 0bb9d39c53a623a4eb03804b27e8e6ec, type: 3}
       propertyPath: m_Name
       value: Hook
+      objectReference: {fileID: 0}
+    - target: {fileID: 3046629018072367669, guid: 0bb9d39c53a623a4eb03804b27e8e6ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb9d39c53a623a4eb03804b27e8e6ec, type: 3}

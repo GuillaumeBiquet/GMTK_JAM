@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Camera mainCam;
     [SerializeField] ParticleSystem thrustParticles;
+
+    [Header("Feedbacks")]
+    public MMFeedbacks HurtFeedback;
+    public MMFeedbacks ShootFeedback;
+
     ParticleSystem.EmissionModule emission;
 
     [Header("Stats")]
@@ -99,6 +105,7 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
+        ShootFeedback?.PlayFeedbacks(bulletPos.position);
         mouseOnScreen = mainCam.ScreenToWorldPoint(Input.mousePosition);
         mouseDirection = (mouseOnScreen - (Vector2)transform.position).normalized;
         Bullet bullet = Instantiate(bullet1, bulletPos.position, Quaternion.identity).GetComponent<Bullet>();
@@ -184,6 +191,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            HurtFeedback?.PlayFeedbacks(transform.position);
             healthBar.SetValue(health);
             StartCoroutine(BecomeTemporarilyInvincible());
         }
