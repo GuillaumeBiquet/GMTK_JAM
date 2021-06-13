@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float score;
     [SerializeField] public PlayerController player;
     float timer = 0f;
+
+    [SerializeField] GameObject scorePanel;
+    [SerializeField] GameObject gamePanel;
+
+
 
     public bool TooManyShips { get { return nbShips >= maxShips; } }
 
@@ -35,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+
         /* timer += Time.deltaTime;
          if (timer > 1)
          {
@@ -57,4 +64,18 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+
+    public void GameOver()
+    {
+        PauseGame();
+        gamePanel.SetActive(false);
+        scorePanel.SetActive(true);
+    }
+
+    public void ReloadLevel()
+    {
+        UnpauseGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }

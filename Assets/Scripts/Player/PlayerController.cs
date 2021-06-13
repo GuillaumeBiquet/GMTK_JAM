@@ -22,15 +22,15 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Camera mainCam;
     [SerializeField] ParticleSystem thrustParticles;
-    [SerializeField] GameObject upgradePanel;
     ParticleSystem.EmissionModule emission;
 
     [Header("Stats")]
-    [SerializeField] float health = 10;
+    [SerializeField] float maxHealth = 10;
+    [SerializeField] HealthBar healthBar;
     [SerializeField] float rotationSpeed = 1;
     [SerializeField] float thrustPower = 100;
     float lastFired;
-
+    float health;
 
     [Header("Fire")]
     [SerializeField] Transform bulletPos;
@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float invincibilityDeltaTime = 0.15f;
     bool isInvincible = false;
 
+    public bool IsDead { get { return health <= 0; } }
 
 
     // Start is called before the first frame update
@@ -51,7 +52,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         emission = thrustParticles.emission;
         emission.enabled = false;
-        //upgradePanel.SetActive(false);
+
+        health = maxHealth;
+        healthBar.SetMaxValue(maxHealth);
+        healthBar.SetValue(health);
     }
 
     // Update is called once per frame
@@ -62,11 +66,6 @@ public class PlayerController : MonoBehaviour
 
         isThrust = Input.GetKey(KeyCode.Space);
         isFiring = Input.GetKey(KeyCode.Mouse0);
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            upgradePanel.SetActive(!upgradePanel.activeSelf);
-        }
 
         if (isFiring && Time.time > lastFired + fireCd)
         {
@@ -131,7 +130,7 @@ public class PlayerController : MonoBehaviour
 
     public void UpgradeDamage(float value)
     {
-        Debug.Log("Upgraded Health");
+        Debug.Log("Upgraded Damage");
         bullet1.GetComponent<Bullet>().UpgradeDamage(value);
     }
 
@@ -142,14 +141,24 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    public void TakeDamage(Transform damageDealer, float damage)
+    public void TakeDamage(float damage)
     {
         if (isInvincible)
         {
             return;
         }
 
-        StartCoroutine(BecomeTemporarilyInvincible());
+
+        health -= damage;
+        if (IsDead)
+        {
+            GameManager.Instance.GameOver();
+        }
+        else
+        {
+            healthBar.SetValue(health);
+            StartCoroutine(BecomeTemporarilyInvincible());
+        }
     }
 
     private IEnumerator BecomeTemporarilyInvincible()
@@ -175,5 +184,12 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if ((collision.gameObject.CompareTag("Ship") &&  !collision.isTrigger) || collision.gameObject.CompareTag("RopeSegment"))
+        {
+            TakeDamage(1f);
+        }
+    }
 
 }

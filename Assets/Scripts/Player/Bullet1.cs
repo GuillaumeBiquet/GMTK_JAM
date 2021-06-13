@@ -26,6 +26,11 @@ public class Bullet1 : Bullet
             Instantiate(explo, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
+        else if (collision.CompareTag("Wall"))
+        {
+            Instantiate(explo, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
 
     }
 }

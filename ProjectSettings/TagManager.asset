@@ -52,6 +52,9 @@ TagManager:
   - name: Ship
     uniqueID: 2209012901
     locked: 0
+  - name: Wall
+    uniqueID: 3347763843
+    locked: 0
   - name: Canvas
     uniqueID: 2689678911
     locked: 0
