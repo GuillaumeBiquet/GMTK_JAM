@@ -242,6 +242,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator ShowOverheatingGFX()
     {
         overHeatingGFX.SetActive(true);
+        yield return new WaitForSeconds(.6f);
         while (hasToCoolDown)
         {
             // Alternate between 0 and 1 scale to simulate flashing
