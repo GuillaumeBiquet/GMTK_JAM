@@ -17,7 +17,7 @@ public class ShopMenu : MonoBehaviour
     public float damageCost = 150;
     [SerializeField] TextMeshProUGUI TMDamageCost;
     [SerializeField] Button damageButton;
-    public float shieldCost = 150;
+    public float shieldCost = 300;
     [SerializeField] TextMeshProUGUI TMShieldCost;
     [SerializeField] Button shieldButton;
 
