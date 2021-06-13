@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    const float MAX_VELOCITY = 5f;
+    float maxVelocity = 5f;
     const float DRAG_INCREMENT = 5f;
     const float MAX_DRAG = 2.5f;
 
@@ -29,6 +29,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] HealthBar healthBar;
     [SerializeField] float rotationSpeed = 1;
     [SerializeField] float thrustPower = 100;
+
+    public float bulletDamage = 1;
+    public float bulletSpeed = 200;
     float lastFired;
     float health;
 
@@ -81,7 +84,7 @@ public class PlayerController : MonoBehaviour
         if (isThrust)
         {
             rb.AddForce(mouseDirection * Time.fixedDeltaTime * thrustPower);
-            rb.velocity = Vector2.ClampMagnitude(rb.velocity, MAX_VELOCITY);
+            rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxVelocity);
             emission.enabled = true;
         }
         else if (rb.velocity != Vector2.zero)
@@ -128,16 +131,28 @@ public class PlayerController : MonoBehaviour
         health += value;
     }
 
-    public void UpgradeDamage(float value)
+    public void UpgradeDamage()
     {
         Debug.Log("Upgraded Damage");
+<<<<<<< Updated upstream
         bullet1.GetComponent<Bullet>().UpgradeDamage(value);
+=======
+        bulletSpeed += 50;
+        fireCd /= 1.2f;
+>>>>>>> Stashed changes
     }
 
-    public void UpgradeSpeed(float value)
+    public void UpgradeSpeed()
     {
         Debug.Log("Upgraded Speed");
-        thrustPower += value;
+        thrustPower += 25;
+        maxVelocity += 1;
+    }
+
+    //TODO
+    public void BuyShield()
+    {
+        Debug.Log("Shield bought");
     }
 
 

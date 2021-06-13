@@ -126,6 +126,7 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
 
             if (hp <= 0)
             {
+                GameManager.Instance.crystals += 25;
                 Destroy(gameObject);
             }
             else

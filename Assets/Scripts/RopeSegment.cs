@@ -54,6 +54,7 @@ public class RopeSegment : MonoBehaviour
 
         if(hp <= 0) 
         {
+            GameManager.Instance.crystals += 25;
             rope.DestroySelf();
         }
         else

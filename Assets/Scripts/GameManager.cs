@@ -11,13 +11,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] int maxShips = 100;
     [System.NonSerialized] public int nbShips = 0;
-    [SerializeField] public float coins;
 
     //Scoring
     [SerializeField] TextMeshProUGUI TMScore;
     [SerializeField] public float score;
     [SerializeField] public PlayerController player;
-    float timer = 0f;
+    [SerializeField] TextMeshProUGUI TMCrystals;
+    [SerializeField] public float crystals;
 
     [SerializeField] GameObject scorePanel;
     [SerializeField] GameObject gamePanel;
@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< Updated upstream
 
         /* timer += Time.deltaTime;
          if (timer > 1)
@@ -49,10 +50,13 @@ public class GameManager : MonoBehaviour
              timer = 0;
          }*/
 
+=======
+>>>>>>> Stashed changes
         score += Time.deltaTime;
         float min = Mathf.Round(score / 60);
         float sec = score % 60;
         TMScore.text = min + ":" + sec.ToString("F0");
+        TMCrystals.text = crystals.ToString();
     }
 
     public void PauseGame()
