@@ -126,7 +126,15 @@ public class Ship : MonoBehaviour, ISerializationCallbackReceiver
                 }
                 Vector2 direction = -(h.collider.transform.position - transform.position);
                 float distance = direction.magnitude;
-                Vector2 force = (direction.normalized * 100)/distance;
+                Vector2 force;
+                if (!h.collider.gameObject.GetComponent<Ship>().isConnected || !isConnected)
+                {
+                    force = (direction.normalized * 10) / distance;
+                } else
+                {
+                    force = (direction.normalized * 100) / distance;
+                }
+                    
                 rb.AddForce(force);
             }
             yield return new WaitForSeconds(1.5f);

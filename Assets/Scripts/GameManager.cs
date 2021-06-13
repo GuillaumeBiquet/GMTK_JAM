@@ -45,9 +45,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         score += Time.deltaTime;
-        if (maxShips < 175 && score > 60)
+        if (maxShips < 200 && score > 60)
         {
-            maxShips = 175;
+            maxShips = 200;
         } else if (maxShips < 250 && score > 120)
         {
             maxShips = 250;
