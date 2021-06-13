@@ -272,6 +272,10 @@ PrefabInstance:
       propertyPath: TMBank
       value: 
       objectReference: {fileID: 390928140}
+    - target: {fileID: 11611169572153260, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
+      propertyPath: shieldCost
+      value: 999
+      objectReference: {fileID: 0}
     - target: {fileID: 11611169572153264, guid: 7b12619a91e65704f9c6c3cddfc396ec, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2405,7 +2409,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782705, y: 1}
+    m_SensorSize: {x: 1.7792642, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

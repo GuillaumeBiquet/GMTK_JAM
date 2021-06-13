@@ -17,7 +17,7 @@ public class ShopMenu : MonoBehaviour
     public float damageCost = 150;
     [SerializeField] TextMeshProUGUI TMDamageCost;
     [SerializeField] Button damageButton;
-    public float shieldCost = 300;
+    public float shieldCost = 999;
     [SerializeField] TextMeshProUGUI TMShieldCost;
     [SerializeField] Button shieldButton;
 
@@ -115,7 +115,7 @@ public class ShopMenu : MonoBehaviour
             //toDo
             playerController.BuyShield();
 
-            if (shieldCost < 665)
+            /*if (shieldCost < 665)
             {
                 shieldCost *= 1.5f;
                 shieldCost = Mathf.Round(shieldCost);
@@ -124,7 +124,7 @@ public class ShopMenu : MonoBehaviour
             if (shieldCost > 665)
             {
                 shieldCost = 666;
-            }
+            }*/
 
         }
     }
