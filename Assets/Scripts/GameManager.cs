@@ -17,10 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float score;
     [SerializeField] public PlayerController player;
     [SerializeField] TextMeshProUGUI TMCrystals;
+    [SerializeField] TextMeshProUGUI scoreFin;
     [SerializeField] public float crystals;
 
     [SerializeField] GameObject scorePanel;
     [SerializeField] GameObject gamePanel;
+    [SerializeField] GameObject healthBar;
+    [SerializeField] GameObject fireBar;
 
 
 
@@ -61,6 +64,9 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         PauseGame();
+        scoreFin.text = "" + score;
+        fireBar.SetActive(false);
+        healthBar.SetActive(false);
         gamePanel.SetActive(false);
         scorePanel.SetActive(true);
     }

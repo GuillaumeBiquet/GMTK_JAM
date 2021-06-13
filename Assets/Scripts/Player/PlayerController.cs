@@ -52,12 +52,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float fireCharge;
     [SerializeField] float chargeFactor = 2;
     [SerializeField] HealthBar fireChargeBar;
+    [SerializeField] GameObject overHeatingGFX;
     bool hasToCoolDown = false;
 
     [Header("Invincibility")]
     [SerializeField] float invincibilityTime = 1.5f;
     [SerializeField] float invincibilityDeltaTime = 0.15f;
     bool isInvincible = false;
+    bool shieldIsInvincible = false;
 
     public bool IsDead { get { return health <= 0; } }
     public bool HasShield { get { return shieldHealth != 0; } }
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
         fireCharge = 0;
         fireChargeBar.SetMaxValue(maxCharge);
         fireChargeBar.SetValue(fireCharge);
+
     }
 
     // Update is called once per frame
@@ -95,6 +98,7 @@ public class PlayerController : MonoBehaviour
             {
                 fireCharge = maxCharge;
                 hasToCoolDown = true;
+                StartCoroutine(ShowOverheatingGFX());
             }
 
             lastFired = Time.time;
@@ -207,7 +211,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (isInvincible)
+        if (isInvincible || shieldIsInvincible)
         {
             return;
         }
@@ -215,11 +219,9 @@ public class PlayerController : MonoBehaviour
 
         if (HasShield)
         {
+            HurtFeedback?.PlayFeedbacks(transform.position);
             shieldHealth--;
-            if (!HasShield)
-            {
-                shieldGFX.SetActive(false);
-            }
+            StartCoroutine(ShieldInvincible());
             return;
         }
 
@@ -235,6 +237,28 @@ public class PlayerController : MonoBehaviour
             healthBar.SetValue(health);
             StartCoroutine(BecomeTemporarilyInvincible());
         }
+    }
+
+    private IEnumerator ShowOverheatingGFX()
+    {
+        overHeatingGFX.SetActive(true);
+        while (hasToCoolDown)
+        {
+            // Alternate between 0 and 1 scale to simulate flashing
+            if (overHeatingGFX.transform.localScale == Vector3.one)
+            {
+                overHeatingGFX.transform.localScale = Vector3.zero;
+            }
+            else
+            {
+                overHeatingGFX.transform.localScale = Vector3.one;
+            }
+            yield return new WaitForSeconds(.6f);
+        }
+
+        overHeatingGFX.transform.localScale = Vector3.one;
+        overHeatingGFX.SetActive(false);
+
     }
 
     private IEnumerator BecomeTemporarilyInvincible()
@@ -257,6 +281,32 @@ public class PlayerController : MonoBehaviour
 
         transform.localScale = Vector3.one;
         isInvincible = false;
+    }
+
+
+    private IEnumerator ShieldInvincible()
+    {
+        shieldIsInvincible = true;
+        for (float i = 0; i < invincibilityTime; i += invincibilityDeltaTime)
+        {
+            // Alternate between 0 and 1 scale to simulate flashing
+            if (shieldGFX.transform.localScale == Vector3.one)
+            {
+                shieldGFX.transform.localScale = Vector3.zero;
+            }
+            else
+            {
+                shieldGFX.transform.localScale = Vector3.one;
+            }
+            yield return new WaitForSeconds(invincibilityDeltaTime);
+        }
+
+        shieldGFX.transform.localScale = Vector3.one;
+        shieldIsInvincible = false;
+        if (!HasShield)
+        {
+            shieldGFX.SetActive(false);
+        }
     }
 
 
